@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Your Dreams — DontWannaWork.com</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <canvas id="cursor-canvas"></canvas>
+
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo">dont<span>wanna</span>work</a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="dreams.html" class="active">Live Your Dreams</a>
+      <a href="impact.html">Your Impact</a>
+      <a href="terms.html">Terms</a>
+      <a href="../index.html" class="nav-cta">Donate →</a>
+    </div>
+  </nav>
+
+  <!-- INPUT AT TOP -->
+  <section class="dreams-input-section">
+    <div class="dreams-input-inner">
+      <div class="section-label">Community</div>
+      <h1 class="hero-title" style="font-size:clamp(2.2rem,5vw,4rem)">What would you do<br/><span class="accent">if you didn't have to work?</span></h1>
+      <p class="hero-sub" style="margin:1rem auto 0">Add your dream. Watch it join the cloud of everyone else who also doesn't wanna work. Words submitted more often appear larger.</p>
+
+      <div class="dream-form">
+        <input type="text" id="dreamInput" class="dream-input"
+          placeholder="Travel to Japan, sleep until noon, paint every day…"
+          maxlength="60" autocomplete="off" />
+        <button class="dream-submit" id="dreamSubmit">Add to Cloud</button>
+      </div>
+      <p class="dream-hint">Max 60 characters · frequently added phrases grow larger · be sincere or be silly</p>
+    </div>
+  </section>
+
+  <!-- WORD CLOUD DIRECTLY BELOW INPUT -->
+  <section class="cloud-section">
+    <div class="cloud-wrap">
+      <canvas id="dreamCloud"></canvas>
+      <div class="cloud-loading" id="cloudLoading">Loading the dream cloud…</div>
+    </div>
+  </section>
+
+  <!-- MANIFESTO BELOW CLOUD -->
+  <section class="section section-alt">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-label">Manifesto</div>
+        <h2 class="section-title">The case for working less</h2>
+        <p class="section-sub">A few things worth remembering, in case the week has made you forget.</p>
+      </div>
+      <div class="manifesto-grid">
+        <div class="manifesto-card">
+          <div class="manifesto-card-icon">⏳</div>
+          <h3>Time is the only non-renewable resource</h3>
+          <p>Money can be earned, spent, and earned again. Time disappears in one direction only. Every year spent doing something you merely tolerate is a year that isn't coming back.</p>
+        </div>
+        <div class="manifesto-card">
+          <div class="manifesto-card-icon">🗺</div>
+          <h3>You've seen very little of the world</h3>
+          <p>The Earth is enormous. Two weeks of PTO per year is a rounding error. The places you haven't been, the people you haven't met, the food you haven't eaten — it's almost all of it.</p>
+        </div>
+        <div class="manifesto-card">
+          <div class="manifesto-card-icon">🎨</div>
+          <h3>You probably have something to make</h3>
+          <p>A book. A garden. A restaurant. A band. A film. It's been waiting quietly while you attend standups. It will keep waiting as long as you need it to.</p>
+        </div>
+        <div class="manifesto-card">
+          <div class="manifesto-card-icon">🛌</div>
+          <h3>Rest is not a character flaw</h3>
+          <p>Productivity culture has done a very thorough job of making you feel guilty for doing nothing. You are a person, not an output. Existing without producing is allowed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <div class="section-inner" style="text-align:center">
+      <h2 class="section-title" style="color:white">Help make one person's retirement real.</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.5); margin:1rem auto 2rem">Every dollar genuinely contributes. You receive nothing in return. That's kind of the point.</p>
+      <a href="../index.html" class="cta-btn">Donate now →</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="../index.html" class="nav-logo">dont<span>wanna</span>work</a>
+        <p>No goods or services provided. All donations are non-refundable gifts.</p>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="impact.html">Your Impact</a>
+        <a href="terms.html">Terms of Use</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> DontWannaWork.com</span>
+      <span>Payments secured by Stripe</span>
+    </div>
+  </footer>
+
+  <script src="../js/cursor.js"></script>
+  <script src="../js/dreams.js"></script>
+</body>
+</html>

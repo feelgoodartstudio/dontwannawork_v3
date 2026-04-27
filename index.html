@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DontWannaWork.com — Help Me Retire Earlier</title>
+  <meta name="description" content="A completely honest website where you give money to help one person retire earlier. You receive nothing in return. Payments processed securely by Stripe." />
+  <!-- No author meta, no Open Graph personal info -->
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+
+  <canvas id="cursor-canvas"></canvas>
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo">dont<span>wanna</span>work</a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="pages/dreams.html">Live Your Dreams</a>
+      <a href="pages/impact.html">Your Impact</a>
+      <a href="pages/terms.html">Terms</a>
+      <a href="index.html" class="nav-cta">Donate →</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="6"/></svg>
+        100% Honest · 0% Useful to You
+      </div>
+      <h1 class="hero-title">
+        Help me retire<br/><span class="accent">years earlier.</span>
+      </h1>
+      <p class="hero-sub">
+        Every dollar you give gets me one step closer to never attending another status update meeting for the rest of my life.
+      </p>
+      <p class="hero-disclaimer">
+        <strong>You receive absolutely nothing in return.</strong> No goods, no services, no thank-you note. That's the entire deal.
+      </p>
+
+      <div class="donation-row">
+        <button class="donate-btn" data-amount="100" data-label="$1">
+          <span class="btn-amount">$1</span>
+          <span class="btn-desc">symbolic</span>
+        </button>
+        <button class="donate-btn" data-amount="500" data-label="$5">
+          <span class="btn-amount">$5</span>
+          <span class="btn-desc">solidarity</span>
+        </button>
+        <button class="donate-btn featured" data-amount="1000" data-label="$10">
+          <span class="btn-amount">$10</span>
+          <span class="btn-desc">believer</span>
+        </button>
+        <button class="donate-btn" data-amount="2000" data-label="$20">
+          <span class="btn-amount">$20</span>
+          <span class="btn-desc">dropout</span>
+        </button>
+        <button class="donate-btn" data-amount="10000" data-label="$100">
+          <span class="btn-amount">$100</span>
+          <span class="btn-desc">legend</span>
+        </button>
+      </div>
+
+      <div class="stripe-trust">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Secured by Stripe — your card details never touch this site
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-value" id="stat-raised">$0</div>
+        <div class="stat-label">Raised so far</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value" id="stat-donors">0</div>
+        <div class="stat-label">Beautiful strangers</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value" id="stat-pct">0%</div>
+        <div class="stat-label">Of $10M goal</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHART -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-label">The math</div>
+        <h2 class="section-title">More money now =<br/>fewer years working</h2>
+        <p class="section-sub">The relationship is simple. Every dollar raised reduces the number of years spent in corporate servitude. The goal is $10,000,000 — enough to retire on investment returns indefinitely.</p>
+      </div>
+      <div class="chart-card">
+        <canvas id="retirementChart" height="300"></canvas>
+      </div>
+      <div class="goal-card">
+        <div class="goal-top">
+          <span class="goal-top-label">Progress toward $10,000,000</span>
+          <span class="goal-top-pct" id="goalPct">0.00%</span>
+        </div>
+        <div class="goal-track">
+          <div class="goal-fill" id="goalFill"></div>
+        </div>
+        <div class="goal-meta">
+          <span>$<span id="goalRaised">0</span> raised</span>
+          <span><strong id="goalDonors">0</strong> donors</span>
+          <span>Goal: $10,000,000</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section-alt">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-label">FAQ</div>
+        <h2 class="section-title">Honest answers to<br/>obvious questions</h2>
+      </div>
+      <div class="faq-list" id="faqList">
+        <div class="faq-item">
+          <div class="faq-q">What do I get for donating? <span class="faq-q-icon">+</span></div>
+          <div class="faq-a">Nothing. Genuinely, truly, absolutely nothing. No email confirmation beyond Stripe's receipt, no sticker, no shoutout, no digital download. Nothing enters your life as a result of this transaction. This is stated clearly and repeatedly because we want you to be fully informed before you click anything.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Where does the money actually go? <span class="faq-q-icon">+</span></div>
+          <div class="faq-a">Directly into one private individual's personal bank account, minus Stripe's processing fees (~2.9% + 30¢). Not a charity. Not a nonprofit. Not a company. Just a person who would prefer to stop working sooner rather than later. There is no cause, no mission, no product.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Is this legal? <span class="faq-q-icon">+</span></div>
+          <div class="faq-a">Yes. Voluntarily giving money to a private individual with no expectation of goods or services is a legal gift in the United States. The recipient is responsible for any applicable tax obligations on funds received. This site makes no misrepresentations about what donors receive — which is nothing — making it distinct from fraud.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Is my payment information safe? <span class="faq-q-icon">+</span></div>
+          <div class="faq-a">Yes. All payments are processed entirely by Stripe, Inc., one of the world's leading payment processors. Your card number, CVV, and billing details are entered directly into Stripe's secure, PCI-compliant infrastructure. This website's server never sees, stores, or has access to your payment details at any point.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can I get a refund? <span class="faq-q-icon">+</span></div>
+          <div class="faq-a">No. By completing a donation you acknowledge that this is a voluntary, non-refundable transfer with no goods or services provided in exchange. This is disclosed clearly before checkout. If you believe a charge was made in error or without your authorization, contact your card issuer directly.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Is this a scam? <span class="faq-q-icon">+</span></div>
+          <div class="faq-a">No. A scam requires deception. This site states plainly — on the homepage, in the checkout flow, and in the Terms of Use — exactly what this is: a voluntary gift to a private individual who will use it toward early retirement. There are no hidden conditions, no future obligations, and no misrepresentation of any kind.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Why $10 million? <span class="faq-q-icon">+</span></div>
+          <div class="faq-a">At a conservative 4% annual withdrawal rate, $10M generates ~$400,000/year in perpetuity from investment returns — enough to retire comfortably without ever touching the principal. It's a real number, not arbitrary. Every dollar genuinely contributes to it.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Is this tax-deductible? <span class="faq-q-icon">+</span></div>
+          <div class="faq-a">Absolutely not. This site is not a registered charity or nonprofit. Donations cannot be claimed as tax deductions. Please do not attempt to claim this on your taxes. Your accountant would have questions we cannot answer.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DONOR WALL -->
+  <section class="section" id="donor-section">
+    <div class="section-inner">
+      <div class="section-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:1rem;">
+        <div>
+          <div class="section-label">Community</div>
+          <h2 class="section-title" style="margin-bottom:0">Wall of Beautiful Strangers</h2>
+          <p class="section-sub" style="margin-top:0.5rem">People who donated and left a message. Real donations only. Like the ones that resonate.</p>
+        </div>
+      </div>
+      <div class="donor-grid" id="donorGrid">
+        <div class="donor-empty">
+          <strong>No donations yet</strong>
+          Be the first beautiful stranger.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">dont<span>wanna</span>work</a>
+        <p>A completely honest website. One person's retirement fund, funded by strangers. No goods or services provided.</p>
+      </div>
+      <div class="footer-links">
+        <a href="pages/dreams.html">Live Your Dreams</a>
+        <a href="pages/impact.html">Your Impact</a>
+        <a href="pages/terms.html">Terms of Use</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> DontWannaWork.com. All donations are non-refundable gifts. No goods or services are provided.</span>
+      <span>Payments secured by Stripe</span>
+    </div>
+  </footer>
+
+  <!-- DONATE MODAL -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+      <div class="modal-eyebrow">Voluntary Donation</div>
+      <h2 class="modal-title">Give <span id="modalAmount">$1</span></h2>
+      <p class="modal-sub">You will receive nothing in return. This is a non-refundable gift to a private individual. By proceeding you confirm you understand and agree.</p>
+
+      <div class="stripe-secure-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Payment secured &amp; processed by Stripe
+      </div>
+
+      <label class="field-label">Your name (optional)</label>
+      <input type="text" class="modal-input" id="donorName" placeholder="Anonymous" maxlength="40" autocomplete="name" />
+
+      <label class="field-label">Leave a message (optional)</label>
+      <input type="text" class="modal-input" id="donorMessage" placeholder="Why are you doing this?" maxlength="120" />
+
+      <label class="field-label">Card details</label>
+      <div class="stripe-element-wrap">
+        <div id="stripe-card-element"></div>
+      </div>
+      <div class="stripe-errors" id="stripeErrors"></div>
+
+      <button class="modal-pay-btn" id="payBtn">Complete Donation</button>
+      <p class="modal-legal">
+        By donating you agree to our <a href="pages/terms.html" target="_blank">Terms of Use</a>. No goods or services are provided. All donations are final and non-refundable. Payment processed by <strong>Stripe</strong>.
+      </p>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/cursor.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
